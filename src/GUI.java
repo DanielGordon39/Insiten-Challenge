@@ -5,8 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.LinkedList;
 
 public class GUI extends Application {
@@ -53,10 +55,11 @@ public class GUI extends Application {
         Button options = new Button("More Options...");
         Label label1 = new Label("JSON File Path: ");
         TextField newFile = new TextField();
-        Button confirm = new Button("x");
+        Button browse = new Button("...");
+        Button confirm = new Button("Open");
         VBox vb2 = new VBox();
         HBox hb6 = new HBox();
-        hb6.getChildren().addAll(label1, newFile, confirm);
+        hb6.getChildren().addAll(label1, newFile, browse, confirm);
         vb2.getChildren().addAll(hb6);
         Scene scene2 = new Scene(vb2);
         options.setOnAction(e -> {
@@ -71,6 +74,11 @@ public class GUI extends Application {
             stage.close();
             list = run.run(filename);
             reset(new Stage());
+        });
+        browse.setOnAction(e -> {
+            FileChooser fc = new FileChooser();
+            File sf = fc.showOpenDialog(null);
+            newFile.setText(sf.getAbsolutePath());
         });
 
         Button exit = new Button("Exit");
