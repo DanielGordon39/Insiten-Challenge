@@ -1,5 +1,3 @@
-package insiten;
-
 public class Company {
 
     String name;
@@ -28,4 +26,7 @@ public class Company {
     public void setRevenue(long revenue) {this.revenue = revenue;}
     public void setLocation(String location) {this.location = location;}
 
+    public String toString() {
+        return "Company: " + name + "\nStatus: " + status + "\nRevenue: " + revenue + "\nLocation: " + location;
+    }
 }
