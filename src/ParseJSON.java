@@ -29,7 +29,7 @@ public class ParseJSON {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("FIle not found");
+            System.out.println("FileNotFoundException @ ParseJson line12: Make sure the file exists/the correct pathway INCLUDING the filename and extension is included");
         }
 
         return list;

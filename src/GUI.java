@@ -69,9 +69,12 @@ public class GUI extends Application {
         confirm.setOnAction(e -> {
             filename = newFile.getText();
             stage.close();
+            list = run.run(filename);
             reset(new Stage());
         });
 
+        Button exit = new Button("Exit");
+        exit.setOnAction(e -> stage.close());
         HBox hb2 = new HBox();
         hb2.getChildren().add(csButton);
 
@@ -84,8 +87,11 @@ public class GUI extends Application {
         HBox hb5 = new HBox();
         hb5.getChildren().add(options);
 
+        HBox hb7 = new HBox();
+        hb7.getChildren().add(exit);
+
         VBox vb1 = new VBox();
-        vb1.getChildren().addAll(hb2, hb3, hb4, hb5);
+        vb1.getChildren().addAll(hb2, hb3, hb4, hb5, hb7);
         Scene scene = new Scene(vb1);
         stage.setScene(scene);
         stage.setTitle("Main Menu");
