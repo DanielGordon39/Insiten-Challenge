@@ -5,37 +5,37 @@ import java.util.Scanner;
 
 public class ParseJSON {
 
-    public LinkedList<Company> readJSON(String filename) {
+    protected LinkedList<Company> readJSON(String filename) {
         LinkedList<Company> list = new LinkedList<>();
         String curr;
+        Scanner sc;
         try {
-            Scanner sc = new Scanner(new File(filename));
-            while (sc.hasNextLine()) {
-                if (sc.nextLine().contains("{")) {
-                    Company company = new Company();
-                    curr = sc.nextLine();
-                    curr = curr.substring(11, curr.length() - 2);
-                    company.setName(curr);
-                    curr = sc.nextLine();
-                    curr = curr.substring(13, curr.length() - 2);
-                    company.setStatus(curr);
-                    curr = sc.nextLine();
-                    curr = curr.substring(13, curr.length() - 1);
-                    company.setRevenue(Long.parseLong(curr));
-                    curr = sc.nextLine();
-                    curr = curr.substring(15, curr.length() - 1);
-                    company.setLocation(curr);
-                    list.add(company);
-                }
-            }
+            sc = new Scanner(new File(filename));
         } catch (FileNotFoundException e) {
-            System.out.println("FileNotFoundException @ ParseJson line12: Make sure the file exists/the correct pathway INCLUDING the filename and extension is included");
+            return null;
         }
-
+        while (sc.hasNextLine()) {
+            if (sc.nextLine().contains("{")) {
+                Company company = new Company();
+                curr = sc.nextLine();
+                curr = curr.substring(11, curr.length() - 2);
+                company.setName(curr);
+                curr = sc.nextLine();
+                curr = curr.substring(13, curr.length() - 2);
+                company.setStatus(curr);
+                curr = sc.nextLine();
+                curr = curr.substring(13, curr.length() - 1);
+                company.setRevenue(Long.parseLong(curr));
+                curr = sc.nextLine();
+                curr = curr.substring(15, curr.length() - 1);
+                company.setLocation(curr);
+                list.add(company);
+            }
+        }
         return list;
     }
 
-    public void printList(LinkedList<Company> list) {
+    private void printList(LinkedList<Company> list) {
         int x = 0;
         for (Company c: list) {
             System.out.println("Company " + ++x + "\n" + c + "\n");

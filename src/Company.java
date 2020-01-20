@@ -1,9 +1,9 @@
 public class Company {
 
-    String name;
-    String status;
-    long revenue;
-    String location;
+    private String name;
+    private String status;
+    private long revenue;
+    private String location;
 
     Company(String name, String status, long revenue, String location) {
         this.name = name;
