@@ -18,7 +18,7 @@ import java.util.LinkedList;
 
 public class GUI extends Application {
 
-    private String filename = ".\\\\resrc\\\\Companies .json";
+    private String filename = ".\\\\Insiten-Challenge-master\\\\resrc\\\\Companies .json";
     private LinkedList<Company> list;
     private Runner run = new Runner();
 
