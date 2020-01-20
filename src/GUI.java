@@ -18,22 +18,29 @@ import java.util.LinkedList;
 
 public class GUI extends Application {
 
-    private String filename = ".\\\\Insiten-Challenge-master\\\\resrc\\\\Companies .json";
+    private String filename;
     private LinkedList<Company> list;
     private Runner run = new Runner();
 
     public void start(Stage stage) {
 
-        Button start = new Button("Start!");
+        Button start = new Button("...");
+        Label label = new Label();
+        label.setText("Select a file holding '.json' objects    \nin the proper format to begin");
 
         start.setOnAction(e -> {
+
+            FileChooser fc = new FileChooser();
+            File sf = fc.showOpenDialog(null);
+            filename = sf.getAbsolutePath();
+
             list = run.run(filename);
             reset(new Stage());
             stage.close();
         });
 
         HBox hb1 = new HBox();
-        hb1.getChildren().add(start);
+        hb1.getChildren().addAll(label, start);
         Scene scene = new Scene(hb1);
         stage.setScene(scene);
         stage.setTitle("Insiten Acquisition App");
